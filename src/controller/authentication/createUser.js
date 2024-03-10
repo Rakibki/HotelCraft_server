@@ -2,7 +2,8 @@ const users = require("../../models/user");
 
 const createUser = async (req, res) => {
   const userInfo = req.body;
-  const user = await users.find({ email: userInfo?.email });
+  const user = await users.findOne({ email: userInfo?.email });
+  console.log(user);
   if (user) {
     return res.send("user already create");
   } else {

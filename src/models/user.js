@@ -7,6 +7,9 @@ const userSchema = new Schema({
   email: {
     type: String,
   },
+  image: {
+    type: String,
+  },
   role: {
     type: String,
   },

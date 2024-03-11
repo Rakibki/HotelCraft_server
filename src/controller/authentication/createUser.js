@@ -1,7 +1,12 @@
 const users = require("../../models/user");
+const { v4: uuidv4 } = require('uuid');
 
 const createUser = async (req, res) => {
-  const userInfo = req.body;
+  const data = req.body;
+  const userInfo = {
+    ...data,
+    userId: uuidv4(),
+  };
   const user = await users.findOne({ email: userInfo?.email });
   console.log(user);
   if (user) {

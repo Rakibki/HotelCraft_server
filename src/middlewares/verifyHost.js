@@ -1,3 +1,14 @@
-const verifyHost = () => {};
+const users = require("../models/user");
+
+const verifyHost = (req, res, next) => {
+  const email = req.params.email;
+  // const email = req.user?.email;
+  const user = users.findOne({ email: email });
+  if (user?.email === "Host") {
+    next();
+  } else {
+    res.json({ Message: "Forbiden Sccess" });
+  }
+};
 
 module.exports = verifyHost;
